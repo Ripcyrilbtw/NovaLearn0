@@ -37,9 +37,14 @@ export default function Header({ onHome, showHome }: Props) {
             </motion.button>
           )}
           <div className="h-4 w-px bg-white/10" />
-          <div className="text-xs text-slate-500 font-mono">
-            {new Date().getFullYear()} Edition
-          </div>
+          <a
+            href="https://amazing-souffle-111a7d.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs text-slate-400 hover:text-sky-400 transition-colors"
+          >
+            Made by Rohit V
+          </a>
         </div>
       </div>
     </motion.header>
