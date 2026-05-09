@@ -26,12 +26,8 @@ export const subjects: Subject[] = [
     glowColor: "rgba(59,130,246,0.6)",
     description: "Numbers, algebra, geometry, calculus and beyond",
     chapters: [
-      { id: "sets", title: "Sets and Functions", description: "Introduction to sets, relations and functions", pdf: "/pdfs/math/sets.pdf", video: "https://www.youtube.com/embed/d_6z_bNUdqE", duration: "45 min" },
-      { id: "sequences", title: "Sequences and Series", description: "Arithmetic, geometric progressions and more", pdf: "/pdfs/math/sequences.pdf", video: "https://www.youtube.com/embed/wtnSW7TJUD8", duration: "52 min" },
-      { id: "trigonometry", title: "Trigonometry", description: "Angles, ratios and identities", pdf: "/pdfs/math/trigonometry.pdf", video: "https://www.youtube.com/embed/PUB0TaZ7bhA", duration: "60 min" },
-      { id: "algebra", title: "Algebra", description: "Polynomials, equations and inequalities", pdf: "/pdfs/math/algebra.pdf", video: "https://www.youtube.com/embed/9ckMQVjmV_Y", duration: "55 min" },
-      { id: "coordinate", title: "Coordinate Geometry", description: "Lines, circles and conic sections", pdf: "/pdfs/math/coordinate.pdf", video: "https://www.youtube.com/embed/hzHSb7AE7-I", duration: "48 min" },
-      { id: "calculus", title: "Differential Calculus", description: "Limits, derivatives and applications", pdf: "/pdfs/math/calculus.pdf", video: "https://www.youtube.com/embed/WUvTyaaNkzM", duration: "70 min" },
+      { id: "in progress", title: "sorry too much", description: "there is too many chapter of notes its hard man", pdf: "/pdfs/math/sets.pdf", video: "https://www.youtube.com/embed/d_6z_bNUdqE", duration: "0 min" },
+     
     ],
   },
   {
@@ -42,12 +38,7 @@ export const subjects: Subject[] = [
     glowColor: "rgba(14,165,233,0.6)",
     description: "Laws of nature, motion, energy and the universe",
     chapters: [
-      { id: "motion", title: "Laws of Motion", description: "Newton's laws and their applications", pdf: "/pdfs/physics/motion.pdf", video: "https://www.youtube.com/embed/kKKM8Y-u7ds", duration: "55 min" },
-      { id: "gravitation", title: "Gravitation", description: "Universal law and satellite motion", pdf: "/pdfs/physics/gravitation.pdf", video: "https://www.youtube.com/embed/MTY1Kje0yLg", duration: "50 min" },
-      { id: "waves", title: "Waves and Sound", description: "Wave properties, resonance and acoustics", pdf: "/pdfs/physics/waves.pdf", video: "https://www.youtube.com/embed/tJW_a6JeXD8", duration: "62 min" },
-      { id: "optics", title: "Optics", description: "Light, reflection, refraction and lenses", pdf: "/pdfs/physics/optics.pdf", video: "https://www.youtube.com/embed/oh4fYhMCgHs", duration: "58 min" },
-      { id: "electricity", title: "Electricity", description: "Current, circuits and Ohm's law", pdf: "/pdfs/physics/electricity.pdf", video: "https://www.youtube.com/embed/MC0tq6fNRwU", duration: "65 min" },
-      { id: "magnetism", title: "Magnetism", description: "Magnetic fields, forces and induction", pdf: "/pdfs/physics/magnetism.pdf", video: "https://www.youtube.com/embed/qwasj4-jMOw", duration: "60 min" },
+      { id: "all lesson", title: "physics class 10", description: "it's all included", pdf: "/pdfs/physics/motion.pdf", video: "https://www.youtube.com/embed/kKKM8Y-u7ds", duration: "55 min" },
     ],
   },
   {
