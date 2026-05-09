@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, Clock, FileText, Play } from "lucide-react";
+import { ChevronLeft, Clock, ExternalLink } from "lucide-react";
 import type { Subject } from "../data/subjects";
 import SubjectIcon from "../components/SubjectIcon";
 
 interface Props {
   subject: Subject;
   onBack: () => void;
-  onSelectChapter: (chapterId: string) => void;
 }
 
-export default function SubjectPage({ subject, onBack, onSelectChapter }: Props) {
+export default function SubjectPage({ subject, onBack }: Props) {
+  const CONTENT_URL = "https://amazing-souffle-111a7d.netlify.app/";
   return (
     <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 relative z-10">
       <div className="max-w-4xl mx-auto">
@@ -49,50 +49,61 @@ export default function SubjectPage({ subject, onBack, onSelectChapter }: Props)
           </div>
         </motion.div>
 
-        {/* Chapter list */}
-        <div className="space-y-3">
-          {subject.chapters.map((chapter, i) => (
-            <motion.button
-              key={chapter.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: i * 0.07, ease: [0.23, 1, 0.32, 1] }}
-              onClick={() => onSelectChapter(chapter.id)}
-              className="w-full text-left group rounded-2xl border border-white/8 bg-white/3 hover:bg-white/6 hover:border-white/15
-                         backdrop-blur-sm p-5 transition-all duration-200 relative overflow-hidden"
-            >
-              {/* Hover left accent */}
-              <div className={`absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b ${subject.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-200`} />
+        {/* Open Learning Content Button */}
+        <motion.a
+          href={CONTENT_URL}
+          target="_blank"
+          rel="noreferrer"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+          className="w-full max-w-2xl mx-auto block"
+        >
+          <div className="group rounded-2xl border border-sky-500/30 bg-gradient-to-r from-sky-500/10 to-cyan-500/10 hover:border-sky-500/60 hover:from-sky-500/20 hover:to-cyan-500/20 backdrop-blur-sm p-8 transition-all duration-300 text-center relative overflow-hidden">
+            {/* Animated background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-sky-400/0 via-sky-400/5 to-sky-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center text-sm font-bold text-slate-400 shrink-0 group-hover:border-sky-500/30 transition-colors">
+            <div className="relative">
+              <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-sky-300 transition-colors">
+                Start Learning {subject.name}
+              </h2>
+              <p className="text-slate-400 mb-4 text-sm">
+                Access all {subject.chapters.length} chapters with comprehensive notes and video lessons
+              </p>
+              <div className="flex items-center justify-center gap-2 text-sky-400 group-hover:text-sky-300 transition-colors">
+                <span className="font-semibold">Open Learning Platform</span>
+                <ExternalLink className="w-4 h-4" />
+              </div>
+            </div>
+          </div>
+        </motion.a>
+
+        {/* Chapter Overview */}
+        <div className="mt-12">
+          <h3 className="text-sm font-semibold text-slate-300 mb-4 uppercase tracking-widest">Chapter Overview</h3>
+          <div className="grid gap-2">
+            {subject.chapters.map((chapter, i) => (
+              <motion.div
+                key={chapter.id}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+                className="flex items-center gap-3 p-3 rounded-lg border border-white/5 bg-white/2 hover:bg-white/5 transition-colors"
+              >
+                <span className="text-xs font-mono text-sky-400 font-bold w-6 shrink-0">
                   {String(i + 1).padStart(2, "0")}
-                </div>
-
+                </span>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-sm font-semibold text-white group-hover:text-sky-300 transition-colors mb-0.5 leading-tight">
-                    {chapter.title}
-                  </h3>
+                  <p className="text-sm font-medium text-white truncate">{chapter.title}</p>
                   <p className="text-xs text-slate-500 truncate">{chapter.description}</p>
                 </div>
-
-                <div className="flex items-center gap-3 shrink-0">
-                  <div className="hidden sm:flex items-center gap-1 text-xs text-slate-500">
-                    <Clock className="w-3.5 h-3.5" />
-                    {chapter.duration}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                      <FileText className="w-3.5 h-3.5 text-slate-400" />
-                    </span>
-                    <span className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                      <Play className="w-3.5 h-3.5 text-slate-400" />
-                    </span>
-                  </div>
+                <div className="flex items-center gap-1 text-xs text-slate-500 shrink-0">
+                  <Clock className="w-3 h-3" />
+                  {chapter.duration}
                 </div>
-              </div>
-            </motion.button>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

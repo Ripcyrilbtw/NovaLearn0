@@ -34,11 +34,7 @@ function HighlightedText({ text, query }: { text: string; query: string }) {
   );
 }
 
-interface Props {
-  onNavigate: (subjectId: string, chapterId?: string) => void;
-}
-
-export default function SearchBar({ onNavigate }: Props) {
+export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [open, setOpen] = useState(false);
@@ -71,7 +67,6 @@ export default function SearchBar({ onNavigate }: Props) {
   }, [query, runSearch]);
 
   const choose = (r: SearchResult) => {
-    onNavigate(r.subject.id, r.chapter?.id);
     setQuery("");
     setResults([]);
     setOpen(false);

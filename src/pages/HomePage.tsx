@@ -6,10 +6,10 @@ import { subjects } from "../data/subjects";
 
 interface Props {
   onSelectSubject: (id: string) => void;
-  onNavigate: (subjectId: string, chapterId?: string) => void;
+  onNavigate: (subjectId: string) => void;
 }
 
-export default function HomePage({ onSelectSubject, onNavigate }: Props) {
+export default function HomePage({ onSelectSubject }: Props) {
   return (
     <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 relative z-10">
       <div className="max-w-7xl mx-auto">
@@ -58,7 +58,7 @@ export default function HomePage({ onSelectSubject, onNavigate }: Props) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <SearchBar onNavigate={onNavigate} />
+            <SearchBar />
           </motion.div>
         </div>
 

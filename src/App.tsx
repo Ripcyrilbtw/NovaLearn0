@@ -9,8 +9,7 @@ import { subjects } from "./data/subjects";
 
 type View =
   | { type: "home" }
-  | { type: "subject"; subjectId: string }
-  | { type: "content"; subjectId: string; chapterId: string };
+  | { type: "subject"; subjectId: string };
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -23,15 +22,11 @@ export default function App() {
 
   const getSubject = (id: string) => subjects.find(s => s.id === id)!;
 
-  const navigate = useCallback((subjectId: string, chapterId?: string) => {
-    if (chapterId) {
-      setView({ type: "content", subjectId, chapterId });
-    } else {
-      setView({ type: "subject", subjectId });
-    }
+  const navigate = useCallback((subjectId: string) => {
+    setView({ type: "subject", subjectId });
   }, []);
 
-  const isContent = view.type === "content";
+  const isContent = false;
 
   return (
     <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
@@ -65,23 +60,6 @@ export default function App() {
             <SubjectPage
               subject={getSubject(view.subjectId)}
               onBack={() => setView({ type: "home" })}
-              onSelectChapter={chapterId =>
-                setView({ type: "content", subjectId: view.subjectId, chapterId })
-              }
-            />
-          </motion.div>
-        )}
-
-        {view.type === "content" && (
-          <motion.div
-            key={`content-${view.subjectId}-${view.chapterId}`}
-            {...pageVariants}
-            className="h-screen overflow-hidden"
-          >
-            <ContentPage
-              subject={getSubject(view.subjectId)}
-              initialChapterId={view.chapterId}
-              onBack={() => setView({ type: "subject", subjectId: view.subjectId })}
             />
           </motion.div>
         )}
